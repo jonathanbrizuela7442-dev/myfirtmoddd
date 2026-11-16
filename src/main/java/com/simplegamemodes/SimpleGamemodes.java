@@ -21,8 +21,7 @@ public class SimpleGamemodes implements ModInitializer {
 
     private static void register(CommandDispatcher<ServerCommandSource> dispatcher, String alias, String mode) {
         dispatcher.register(CommandManager.literal(alias).executes(context -> {
-            ServerCommandSource source = context.getSource();
-            source.getServer().getCommandManager().executeWithPrefix(source, "gamemode " + mode);
+            dispatcher.execute("gamemode " + mode, context.getSource());
             return 1;
         }));
     }
